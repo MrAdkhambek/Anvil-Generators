@@ -1,0 +1,68 @@
+[versions]
+agp = "7.3.1"
+
+junit4 = "4.13.2"
+androidDesugarJdkLibs = "1.2.2"
+
+detektPlugin = "1.23.1"
+ktlintPlugin = "11.5.0"
+
+kotlinpoet = "1.14.2"
+dokkaVersion = "1.8.20"
+kotlinVersion = "1.8.22"
+kotlin-ksp = "1.8.22-1.0.11"
+
+anvil = "2.4.7-1-8"
+dagger = "2.46.1"
+
+maven-publish = "0.24.0"
+
+[plugins]
+android-lib = { id = "com.android.library", version.ref = "agp" }
+android-app = { id = "com.android.application", version.ref = "agp" }
+
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokkaVersion" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
+
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
+
+publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detektPlugin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }
+
+[libraries]
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinVersion" }
+publish-gradlePlugin = { group = "com.vanniktech", name = "gradle-maven-publish-plugin", version.ref = "maven-publish" }
+android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
+
+squareup-okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version = "4.10.0" }
+squareup-okhttp-okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+
+# Kotlin
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlinVersion" }
+dokka-java = { group = "org.jetbrains.dokka", name = "kotlin-as-java-plugin", version.ref = "dokkaVersion" }
+
+dagger-dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+
+anvil-gradlePlugin = { group = "com.squareup.anvil", name = "gradle-plugin", version.ref = "anvil" }
+anvil-annotations = { group = "com.squareup.anvil", name = "annotations", version.ref = "anvil" }
+anvil-compiler-api = { group = "com.squareup.anvil", name = "compiler-api", version.ref = "anvil" }
+anvil-compiler-utils = { group = "com.squareup.anvil", name = "compiler-utils", version.ref = "anvil" }
+
+kotlinpoet-core = { group = "com.squareup", name = "kotlinpoet", version.ref = "kotlinpoet" }
+kotlinpoet-ksp = { group = "com.squareup", name = "kotlinpoet-ksp", version.ref = "kotlinpoet" }
+
+auto-service-annotations = { module = "com.google.auto.service:auto-service-annotations", version = "1.0" }
+auto-service-ksp = { module = "dev.zacsweers.autoservice:auto-service-ksp", version = "1.1.0" }
+
+# Test
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+
+[bundles]
+kotlin = [
+    "kotlin-stdlib",
+]
