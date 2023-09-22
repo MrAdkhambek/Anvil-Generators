@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.adkhambek.anvil.fragment"
+    namespace = "com.adkhambek.kunkka.fragment"
 }
 
 dependencies {

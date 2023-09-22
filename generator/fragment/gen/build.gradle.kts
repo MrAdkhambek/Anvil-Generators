@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.adkhambek.anvil.fragment"
+    namespace = "com.adkhambek.kunkka.fragment"
 }
 
 kotlin {
@@ -24,7 +24,6 @@ tasks.withType<KotlinCompile>().configureEach {
         freeCompilerArgs += "-opt-in=com.squareup.anvil.annotations.ExperimentalAnvilApi"
     }
 }
-
 
 dependencies {
     implementation(projects.generator.fragment.core)

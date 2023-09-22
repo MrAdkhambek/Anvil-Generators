@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.adkhambek.anvil.vm"
+    namespace = "com.adkhambek.kunkka.vm"
 }
 
 kotlin {
