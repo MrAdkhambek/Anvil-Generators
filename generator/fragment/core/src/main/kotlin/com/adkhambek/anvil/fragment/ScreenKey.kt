@@ -6,6 +6,14 @@ import kotlin.annotation.AnnotationRetention.RUNTIME
 import kotlin.annotation.AnnotationTarget.FUNCTION
 import kotlin.reflect.KClass
 
+/**
+ * Dagger MapKey wrapper for fragment
+ *
+ * ```
+ * @ScreenKey(YourFragment::class)
+ * fun bindYourFragment(fragment: YourFragment) : Fragment
+ * ```
+ */
 @MapKey
 @MustBeDocumented
 @Target(FUNCTION)

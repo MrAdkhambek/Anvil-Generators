@@ -6,7 +6,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.adkhambek.android.library")
+    id("com.adkhambek.kotlin")
     alias(libs.plugins.kotlin.ksp)
     id("com.adkhambek.publish")
 }
@@ -20,7 +20,6 @@ tasks.withType<KotlinCompile>().configureEach {
         freeCompilerArgs += "-opt-in=com.squareup.anvil.annotations.ExperimentalAnvilApi"
     }
 }
-
 
 dependencies {
     implementation(projects.generator.retrofit.core)
@@ -38,5 +37,5 @@ dependencies {
     ksp(libs.auto.service.ksp)
 
     testImplementation(testFixtures(libs.anvil.compiler.utils))
-//    testImplementation(libs.jupiter)
+    testImplementation(libs.junit4)
 }

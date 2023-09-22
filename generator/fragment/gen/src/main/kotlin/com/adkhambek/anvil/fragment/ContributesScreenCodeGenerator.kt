@@ -57,7 +57,6 @@ public class ContributesScreenCodeGenerator : CodeGenerator {
             .scope()
             .asClassName()
 
-        // Generate a Dagger module file called MyApi_Module.
         val content = FileSpec.buildFile(generatedPackage, moduleClassName) {
             addType(
                 TypeSpec.interfaceBuilder(moduleClassName)

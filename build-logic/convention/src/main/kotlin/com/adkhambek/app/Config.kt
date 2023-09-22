@@ -9,6 +9,7 @@ internal object Config {
     const val targetSdkVersion = 32
 
     val javaVersion = JavaVersion.VERSION_11
+    val gradleJavaVersion = JavaVersion.VERSION_17
 
     val freeCompilerArgs = listOf(
         "-opt-in=kotlin.RequiresOptIn",

@@ -11,6 +11,10 @@ plugins {
     id("com.adkhambek.publish")
 }
 
+android {
+    namespace = "com.adkhambek.anvil.fragment"
+}
+
 kotlin {
     explicitApi()
 }

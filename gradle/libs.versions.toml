@@ -1,18 +1,18 @@
 [versions]
-agp = "7.3.1"
+agp = "8.1.1"
 
 junit4 = "4.13.2"
-androidDesugarJdkLibs = "1.2.2"
+androidDesugarJdkLibs = "2.0.3"
 
 detektPlugin = "1.23.1"
 ktlintPlugin = "11.5.0"
 
 kotlinpoet = "1.14.2"
 dokkaVersion = "1.8.20"
-kotlinVersion = "1.8.22"
-kotlin-ksp = "1.8.22-1.0.11"
+kotlinVersion = "1.9.0"
+kotlin-ksp = "1.9.0-1.0.12"
 
-anvil = "2.4.7-1-8"
+anvil = "2.4.8-1-8"
 dagger = "2.46.1"
 
 maven-publish = "0.24.0"
@@ -23,7 +23,6 @@ android-app = { id = "com.android.application", version.ref = "agp" }
 
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokkaVersion" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
 
 kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
@@ -40,6 +39,8 @@ android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs
 
 squareup-okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version = "4.10.0" }
 squareup-okhttp-okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+
+androidx-annotation = "androidx.annotation:annotation:1.7.0"
 
 # Kotlin
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlinVersion" }

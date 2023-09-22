@@ -6,11 +6,10 @@ import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.anvil.annotations.ExperimentalAnvilApi
 import com.squareup.anvil.compiler.internal.testing.compileAnvil
 import com.tschuchort.compiletesting.KotlinCompilation
-import dagger.assisted.AssistedFactory
+import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 import org.junit.Assert
 import org.junit.Test
 import java.lang.reflect.AnnotatedElement
-import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 
 @OptIn(ExperimentalAnvilApi::class)
 internal class ContributesSavedStateViewModelCodeGeneratorTest {
@@ -51,7 +50,6 @@ internal class ContributesSavedStateViewModelCodeGeneratorTest {
 
                 val param = providerMethod.parameters.single()
                 Assert.assertEquals(param.type, classLoader.loadClass("com.test.TestViewModelAssistedFactory"))
-
             }
 
             run {
@@ -66,7 +64,6 @@ internal class ContributesSavedStateViewModelCodeGeneratorTest {
 
                 val param = providerMethod.parameters.single()
                 Assert.assertEquals(param.type, classLoader.loadClass("androidx.lifecycle.SavedStateHandle"))
-
             }
         }
     }

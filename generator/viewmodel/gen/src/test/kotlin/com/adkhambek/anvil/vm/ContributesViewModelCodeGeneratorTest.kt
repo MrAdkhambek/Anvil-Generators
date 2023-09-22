@@ -5,12 +5,9 @@ package com.adkhambek.anvil.vm
 import com.squareup.anvil.annotations.ContributesTo
 import com.squareup.anvil.annotations.ExperimentalAnvilApi
 import com.squareup.anvil.compiler.internal.testing.compileAnvil
-import dagger.Provides
-import dagger.Reusable
 import com.tschuchort.compiletesting.KotlinCompilation.ExitCode.OK
-import org.junit.Assert
-import java.lang.reflect.AnnotatedElement
 import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
+import org.junit.Assert
 import org.junit.Test
 
 @OptIn(ExperimentalAnvilApi::class)

@@ -7,11 +7,11 @@ import com.squareup.anvil.compiler.internal.testing.compileAnvil
 import com.tschuchort.compiletesting.KotlinCompilation
 import dagger.Binds
 import dagger.multibindings.IntoMap
+import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.lang.reflect.AnnotatedElement
-import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 
 internal class ContributesScreenCodeGeneratorTest {
 

@@ -22,7 +22,7 @@ class KotlinLibraryConventionPlugin : Plugin<Project> {
 
             tasks.withType(KotlinCompile::class).all {
                 kotlinOptions {
-                    jvmTarget = Config.javaVersion.toString()
+                    jvmTarget = Config.gradleJavaVersion.toString()
                     freeCompilerArgs = (
                             freeCompilerArgs + Config.freeCompilerArgs + Config.libraryCompilerArgs
                             ).distinct()
@@ -30,8 +30,8 @@ class KotlinLibraryConventionPlugin : Plugin<Project> {
             }
 
             configure<JavaPluginExtension> {
-                sourceCompatibility = Config.javaVersion
-                targetCompatibility = Config.javaVersion
+                sourceCompatibility = Config.gradleJavaVersion
+                targetCompatibility = Config.gradleJavaVersion
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")

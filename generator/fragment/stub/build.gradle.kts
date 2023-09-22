@@ -7,5 +7,6 @@ kotlin {
 }
 
 dependencies {
+    compileOnly(libs.androidx.annotation)
 //    api(libs.javax.inject)
 }

@@ -11,6 +11,10 @@ plugins {
     id("com.adkhambek.publish")
 }
 
+android {
+    namespace = "com.adkhambek.anvil.vm"
+}
+
 kotlin {
     explicitApi()
 }
@@ -20,7 +24,6 @@ tasks.withType<KotlinCompile>().configureEach {
         freeCompilerArgs += "-opt-in=com.squareup.anvil.annotations.ExperimentalAnvilApi"
     }
 }
-
 
 dependencies {
     implementation(projects.generator.viewmodel.core)

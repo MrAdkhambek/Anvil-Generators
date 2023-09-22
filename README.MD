@@ -42,6 +42,17 @@ class CustomFragmentFactory @Inject constructor(
         return fragmentProviders[clazz]?.get() ?: super.instantiate(classLoader, className)
     }
 }
+
+// OR
+class CustomFragmentFactory @Inject constructor(
+    fragmentProviders: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<Fragment>>,
+) : FragmentScreenFactory(fragmentProviders)
+
+// OR
+class CustomFragmentFactory @Inject constructor(
+    fragmentProviders: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<Fragment>>,
+    legacyFragmentFactory: FragmentFactory,
+) : FragmentScreenFactory(fragmentProviders, legacyFragmentFactory)
 ```
 ---
 
@@ -62,51 +73,10 @@ class AuthViewModel @AssistedInject constructor(
 
 ```kotlin
 class AuthSavedStateViewModelFactory @Inject constructor(
-    private val assistedFactories: DaggerMap<Class<out ViewModel>, AssistedSavedStateViewModelFactory<out ViewModel>>,
-    private val viewModelProviders: DaggerMap<Class<out ViewModel>, Provider<ViewModel>>
-) : InjectingSavedStateViewModelFactory {
-    
-    override fun create(owner: SavedStateRegistryOwner, defaultArgs: Bundle?) =
-        object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-            override fun <T : ViewModel> create(
-                key: String,
-                modelClass: Class<T>,
-                handle: SavedStateHandle
-            ): T {
-                val viewModel = createAssistedInjectViewModel(modelClass, handle)
-                    ?: createInjectViewModel(modelClass)
-                    ?: throw IllegalArgumentException("Unknown model class $modelClass")
-
-                try {
-                    @Suppress("UNCHECKED_CAST")
-                    return viewModel as T
-                } catch (e: Exception) {
-                    throw RuntimeException(e)
-                }
-            }
-        }
-    
-    private fun <T : ViewModel?> createAssistedInjectViewModel(
-        modelClass: Class<T>,
-        handle: SavedStateHandle
-    ): ViewModel? {
-        val creator = assistedFactories[modelClass]
-            ?: assistedFactories.asSequence().firstOrNull {
-                modelClass.isAssignableFrom(it.key)
-            }?.value
-            ?: return null
-
-        return creator.create(handle)
-    }
-
-    private fun <T : ViewModel?> createInjectViewModel(modelClass: Class<T>): ViewModel? {
-        val creator = viewModelProviders[modelClass]
-            ?: viewModelProviders.asSequence().firstOrNull {
-                modelClass.isAssignableFrom(it.key)
-            }?.value
-            ?: return null
-
-        return creator.get()
-    }
-}
+    assistedFactories: DaggerMap<Class<out ViewModel>, AssistedSavedStateViewModelFactory<out ViewModel>>,
+    viewModelProviders: DaggerMap<Class<out ViewModel>, Provider<ViewModel>>,
+) : DefaultSavedStateViewModelFactory(
+    assistedFactories = assistedFactories,
+    viewModelProviders = viewModelProviders,
+)
 ```

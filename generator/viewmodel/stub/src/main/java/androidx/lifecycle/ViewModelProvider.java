@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package androidx.lifecycle
 
-public class SavedStateHandle
+package androidx.lifecycle;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.viewmodel.CreationExtras;
+
+public class ViewModelProvider {
+    public interface Factory {
+        @NonNull
+        <T extends ViewModel> T create(@NonNull Class<T> modelClass);
+
+        @NonNull
+        <T extends ViewModel> T create(@NonNull Class<T> modelClass, @NonNull CreationExtras extras);
+    }
+
+    static class OnRequeryFactory {
+        void onRequery(@NonNull ViewModel viewModel) {
+        }
+    }
+}
